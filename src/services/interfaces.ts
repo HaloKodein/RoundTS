@@ -5,10 +5,16 @@ export interface ICommand {
   message: Message
 }
 
+export interface IHandlerConfig {
+  enabled: boolean,
+  maintenance: boolean
+}
+
 export interface IHandlerHelp {
   name: string,
   aliases: string[],
-  permissions: number
+  permissions: number,
+  config: IHandlerConfig
 }
 
 export interface IHandlerCommand {

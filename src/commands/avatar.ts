@@ -4,7 +4,8 @@ export = {
   help: {
     name: "Avatar",
     aliases: ["foto","avt"],
-    permission: 0
+    permissions: 0,
+    config: { enabled: true, maintenance: false }
   },
   run: async (client: Client, message: Message, args: string[]) => {
     const user = message.mentions.users.first() || client.users.cache.get(args[0]) || message.author;
