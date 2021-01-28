@@ -1,30 +1,31 @@
 import { IUserSchema, IUserSchemaObj } from "../schemas/IUserSchema";
 import UserSchema from '../schemas/UserSchema';
 import mongoose from 'mongoose';
+import Log from '../utils/log';
 
 mongoose.connect("mongodb://localhost:27017/tsnode", {
   useNewUrlParser: true,
   useUnifiedTopology: true
-}).catch(error => console.log(error));
+}).then(() => Log.info("Conectada com sucesso", "DATABASE")).catch(error => Log.error(error, "DATABASE"));
 
 export default new class DbService {
   public async wrapperUser(body:IUserSchemaObj): Promise<object> {
     const user = await UserSchema.create(body);
-    console.log(`[DB] Usuario: ${user.username}(${user._id}) [USERCREATE]`);
+    Log.info(`Usuario criado: ${user.username}(${user._id})`, "DATABASE");
     return user;
   }
 
   public async findUser(body): Promise<object> {
     const user = await UserSchema.findOne(body);
     if (!user) return;
-    console.log(`[DB] Usuario: ${user.username}(${user._id}) [USERFIND]`);
+    Log.info(`Usuario encontrado: ${user.username}(${user._id})`, "DATABASE");
     return user;
   }
 
   public async deleteUser(body): Promise<object> {
     const user = await UserSchema.deleteOne(body);
     if (!user) return;
-    console.log(`[DB] Usuario: ${user.username}(${user._id}) [USERDELETE]`);
+    Log.info(`Usuario deletado: ${user.username}(${user._id})`, "DATABASE");
     return user;
   }
 };
