@@ -1,0 +1,5 @@
+export default {
+  TOKEN: "ODA0MDE1OTA4MTQ1MDcwMTEw.YBGMKg.JivkfjdAaIdKKmy-V7n8Z8WYcI4",
+  OWNER_ID: "557746795543789568",
+  PREFIX: "!"
+}
