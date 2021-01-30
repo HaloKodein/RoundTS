@@ -7,7 +7,9 @@ import Log from '../utils/log';
 
 mongoose.connect("mongodb://localhost:27017/tsnode", {
   useNewUrlParser: true,
-  useUnifiedTopology: true
+  useUnifiedTopology: true,
+  useFindAndModify: false,
+  useCreateIndex: true
 }).then(() => Log.info("Conectada com sucesso", "DATABASE")).catch(error => Log.error(error, "DATABASE"));
 
 export default new class DbService {
@@ -18,6 +20,12 @@ export default new class DbService {
 
   public async findUser(body): Promise<object> {
     const user = await UserSchema.findOne(body);
+    if (!user) return;
+    return user;
+  }
+
+  public async updateUser(body, update): Promise<object> {
+    const user = await UserSchema.findOneAndUpdate(body, update, { new: true });
     if (!user) return;
     return user;
   }
@@ -37,6 +45,12 @@ export default new class DbService {
     const guild = await GuildSchema.findOne(body);
     if (!guild) return;
     return guild;
+  }
+
+  public async updateGuild(body, update): Promise<object> {
+    const user = await GuildSchema.findOneAndUpdate(body, update, { new: true });
+    if (!user) return;
+    return user;
   }
 
   public async deleteGuild(body): Promise<object> {

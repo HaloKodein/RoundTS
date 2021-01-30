@@ -13,24 +13,19 @@ export = {
     const database = db;
     try {
       const code = args.join(" ");
-      let evaled = eval(code) 
+      let evaled = await eval(code) 
       if(!code)return message.reply('Digite um código')
       if (typeof evaled !== "string")
-      evaled = require("util").inspect(evaled);      
-      const embed = new MessageEmbed()
-      .setTitle(":white_check_mark: Executado!")
-      .setColor("BLACK")
-      .addField(`:inbox_tray: Input`, '```' + (code) + '```')
-      .addField(`:outbox_tray: Output:`, '```' + clean(evaled) + '```')
-      message.channel.send({embed});
+      evaled = await require("util").inspect(evaled);
+      const sucess = await new MessageEmbed()
+      .setDescription('```ts\n' + clean(evaled) + '```')
+      .setColor("#2f3136");
+      await message.channel.send(sucess);
     } catch (err) {
-      var code = args.join(' ')
-      const embed = new MessageEmbed()
-      .setTitle(":negative_squared_cross_mark: Error")
-      .setColor("#ff0000")
-      .addField(`:inbox_tray: Input`, '```' + (code) + '```')
-      .addField(`:outbox_tray: Output:`, '```' + clean(err) + '```')
-      message.channel.send({embed})
+      const error = await new MessageEmbed()
+      .setDescription('```ts\n' + clean(err) + '```')
+      .setColor("#2f3136");
+      await message.channel.send(error);
     }
   }
 }
