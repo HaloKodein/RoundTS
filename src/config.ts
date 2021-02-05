@@ -1,8 +1,29 @@
 export default {
-  TOKEN: "ODA0MDE1OTA4MTQ1MDcwMTEw.YBGMKg.dz9NDHqBrMNCEWR63bi2K2Ecm60",
-  OWNER_ID: "557746795543789568",
-  PREFIX: "!",
-  BASEURL: "http://localhost:3000",
-  OAUTHSECRET: "RChh9B79T7G0jyKMVot22RfWm-jCJPwl",
-  SESSIONSECRET: "25fasS1f1B79T412417G051251jyKM412412Vot22RfjCJsaPwl"
+  token: "",
+  owner: "",
+  baseurl: "",
+  oauthsecret: "",
+  sessionsecret: "",
+  utils: {
+    colors: {
+      default: "",
+      plus: "",
+      invisible: "",
+      error: ""
+    },
+    reactions: {
+      linkdelete: "",
+      error2: "",
+      info2: "",
+      infouser2: "",
+      police: ""
+    },
+    emojis: {
+      linkdelete: "",
+      error2: "",
+      info2: "",
+      infouser2: "",
+      police: ""
+    }
+  }
 }

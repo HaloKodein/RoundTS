@@ -9,6 +9,10 @@ export = async (client:Client, member:GuildMember) => {
   await database.wrapperUser({
     _id: member.user.id,
     username: member.user.username,
-    economy: { money: 0,rep: 0,backgrounds: [],badges: [] }
+    admin: false,
+    money: 0,
+    rep: 0,
+    backgrounds: [],
+    badges: []
   }).then(() => log.info(`Usuario criado: ${member.user.username}(${member.user.id})`, "DATABASE"));
 }

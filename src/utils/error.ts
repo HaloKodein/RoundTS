@@ -5,16 +5,16 @@ import log from './log';
 export default new class SendError {
   public async sendChannelError(message: string, channel:TextChannel): Promise<void> {
     const error = new Discord.MessageEmbed()
-    .setTitle("Erro!")
+    .setAuthor("Erro", channel.client.user.displayAvatarURL({dynamic:true}))
     .setDescription(message)
-    .setColor("RED")
-    .setFooter(channel.client.user.username, channel.client.user.displayAvatarURL({dynamic:true}));
+    .setColor(config.utils.colors.error)
+    .setFooter(channel.client.user.username);
     
     channel.send(error);
   }
 
   public async sendOwnerError(message: string, client: Client): Promise<void> {
-    const owner = client.users.cache.get(config.OWNER_ID)
+    const owner = client.users.cache.get(config.owner)
     const error = new Discord.MessageEmbed()
     .setTitle("Erro!")
     .setDescription(message)

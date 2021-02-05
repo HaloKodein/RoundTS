@@ -8,16 +8,18 @@ export = async (client:Client, guild:Guild) => {
     name: guild.name,
     prefix: "!",
     plus: false,
+    blacklist: [],
     owner: {
       id: guild.owner.id,
       username: guild.owner.user.username
     }
   }).then(() => log.info(`Server criado: ${guild.name}(${guild.id})`, "DATABASE"));
+  
 
   await guild.members.cache.map(async e => {
     if (e.user.bot) return;
     const result = await database.findUser({_id:e.id});
     if (result) return;
-    database.wrapperUser({_id: e.user.id,username: e.user.username,economy: {money: 0,rep: 0,backgrounds: [],badges: []}});
+    await database.wrapperUser({_id: e.user.id,username: e.user.username,admin: false, money: 0,rep: 0,backgrounds: [],badges: []});
   });
 }

@@ -4,12 +4,11 @@ import { IUserSchema } from './IUserSchema';
 const UserSchema = new Schema({
   _id: String,
   username: String,
-  economy: {
-    money: Number,
-    rep: Number,
-    badges: Array,
-    backgrounds: Array,
-  }
+  admin: Boolean,
+  money: Number,
+  rep: Number,
+  badges: Array,
+  backgrounds: Array,
 }, {
   timestamps: true
 })

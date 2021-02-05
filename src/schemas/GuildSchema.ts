@@ -6,6 +6,7 @@ const GuildSchema = new Schema({
   prefix: String,
   plus: Boolean,
   name: String,
+  blacklist: Array,
   owner: {
     id: String,
     name: String

@@ -21,8 +21,8 @@ passport.deserializeUser((obj, done) => {
 
 passport.use(new DiscordStrategy({
   clientID: client.user.id,
-  clientSecret: config.OAUTHSECRET,
-  callbackURL: `${config.BASEURL}/api/callback`,
+  clientSecret: config.oauthsecret,
+  callbackURL: `${config.baseurl}/api/callback`,
   scope: ['identify', 'guilds']
 },
 async (accessToken, refreshToken, profile, done) => {
@@ -35,7 +35,7 @@ async (accessToken, refreshToken, profile, done) => {
 }))
 
 app.use(session({
-  secret: config.OAUTHSECRET,
+  secret: config.sessionsecret,
   resave: true,
   saveUninitialized: false,
 }));

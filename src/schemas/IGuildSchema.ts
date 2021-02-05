@@ -10,6 +10,7 @@ export interface IGuildSchemaObj {
   prefix?: string,
   plus?: boolean,
   name?: string,
+  blacklist: string[],
   owner?: IGuildOwner
 }
 
@@ -18,5 +19,6 @@ export interface IGuildSchema extends Document {
   prefix?: string,
   plus?: boolean,
   name?: string,
+  blacklist: string[],
   owner?: IGuildOwner
 }

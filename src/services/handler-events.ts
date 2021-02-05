@@ -7,6 +7,6 @@ export default class EventsHandler {
   constructor(private client: Client){  
     EventService.startEvents(client);
     CommandService.startCommands();
-    client.login(config.TOKEN);
+    client.login(config.token);
   }
 }
