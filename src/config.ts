@@ -1,5 +1,4 @@
 export default {
-<<<<<<< HEAD
   token: "",
   owner: "",
   baseurl: "",
@@ -27,12 +26,4 @@ export default {
       police: ""
     }
   }
-=======
-  TOKEN: "",
-  OWNER_ID: "",
-  PREFIX: "",
-  BASEURL: "",
-  OAUTHSECRET: "",
-  SESSIONSECRET: ""
->>>>>>> 75ef2e02dcda5ca844796d3d93529af4f0bf9ebc
 }
